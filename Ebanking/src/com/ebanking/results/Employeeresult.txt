@@ -1,0 +1,4 @@
+EmployerName###LoginPassword###Role###Branch###Results
+Parvathalareddy###@1gautham###GmanagerS###Belconnenact^$^%$&New Employer Created7430 Successfully
+Muralisharma###@2naveena###AmanagerS###Gungalinact^$^%$&New Employer Created7433 Successfully
+Niharika123###@2akshara###DirectorSpkcenter###Wodenact^$^%$&New Employer Created7434 Successfully

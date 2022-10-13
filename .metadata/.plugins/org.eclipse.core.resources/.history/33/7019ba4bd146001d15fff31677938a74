@@ -1,0 +1,128 @@
+package mvnpackagesel.scripts;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class MvnSample {
+	
+	WebDriver driver=new FirefoxDriver();
+	String Expval,Actval;
+	@BeforeTest
+
+	public  void Lunch() throws InterruptedException 
+	{
+		// Lunch Firefox
+		
+		String Expval="Ranford Bank";
+		
+	
+	
+				//Maximise
+				
+				driver.manage().window().maximize();
+				//URL
+				
+				driver.get("http://103.211.39.246/ranford2");
+				
+				String Actval=driver.findElement(By.xpath("/html/body/form/table/tbody/tr/td/table/tbody/tr[4]/td/table/tbody/tr[1]/td[4]/p/span")).getText();
+				
+				//comparision
+				if(Expval.equalsIgnoreCase(Actval))
+				{
+					System.out.println("Application Lunch Succeessfully");
+				}
+				else
+				{
+					System.out.println("Application Launch Failed ");
+				}
+				//get title
+				
+				String Tit=driver.getTitle();
+				System.out.println(Tit);
+	}
+	
+				@Test
+				public void Login()
+				{
+				//Admin login
+				
+				Expval="welcome to admin";
+				
+				
+				driver.findElement(By.id("txtuId")).sendKeys("Admin");
+				driver.findElement(By.id("txtPword")).sendKeys("mq@system$");
+				
+				Thread.sleep(3000);
+				
+				driver.findElement(By.xpath("//*[@id=\"login\"]")).click();
+				
+				Actval=driver.findElement(By.xpath("/html/body/table/tbody/tr/td/table/tbody/tr[4]/td/table/tbody/tr[1]/td[4]/strong/font/font")).getText();
+				
+				if(Expval.equalsIgnoreCase(Actval))
+				{
+					System.out.println("Admin login page Succeessfully");
+				}
+				else
+				{
+					System.out.println("Admin login page Failed ");
+				}
+				}
+				@AfterTest
+				public void Br()
+				{
+				// Branch creation
+				
+				Expval="Sucessfully";
+				
+				driver.findElement(By.xpath("/html/body/table/tbody/tr/td/table/tbody/tr[4]/td/table/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr[2]/td/a/img")).click();
+				driver.findElement(By.id("BtnNewBR")).click();
+				
+				driver.findElement(By.id("txtbName")).sendKeys("lingampalliaus");
+				driver.findElement(By.id("txtAdd1")).sendKeys("viharinagarcolony");
+				driver.findElement(By.id("txtZip")).sendKeys("43624");
+				
+				//Drop Down
+				Select Ctry=new Select(driver.findElement(By.xpath("//*[@id=\"lst_counrtyU\"]")));
+				Ctry.selectByVisibleText("INDIA");
+				
+				Select St=new Select(driver.findElement(By.xpath("//*[@id=\"lst_stateI\"]")));
+				St.selectByVisibleText("GOA");
+				
+				Select City= new Select(driver.findElement(By.xpath("//*[@id=\"lst_cityI\"]")));
+				City.selectByVisibleText("GOA");
+				
+				driver.findElement(By.id("btn_insert")).click();
+				
+				
+				//Alert
+				Actval=driver.switchTo().alert().getText();
+				
+				driver.switchTo().alert().accept();
+				
+				
+				//comparision
+				
+				
+				if(Actval.contains(Expval))
+				{
+					System.out.println("Branch created successfully");
+					
+				}
+				else
+				{
+					System.out.println("Branch already existed");
+				}
+				
+				driver.findElement(By.xpath("/html/body/div/form/table/tbody/tr/td/table/tbody/tr[2]/td/table/tbody/tr/td[3]/table/tbody/tr/td[1]/a/img")).click();
+				
+
+	}
+
+}
+

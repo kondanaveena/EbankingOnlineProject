@@ -1,0 +1,11 @@
+Feature: Admin Login Functionality
+
+Scenario: Admin Login with Valid data
+
+Given User Should on Ranford HP
+
+When User Enters UserName Password and click on Login
+
+Then User Validates Admin Login
+
+When User clicks on Logout

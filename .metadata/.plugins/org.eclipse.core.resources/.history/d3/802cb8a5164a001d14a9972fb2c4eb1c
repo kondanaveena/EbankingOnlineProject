@@ -1,0 +1,75 @@
+package stepdefination;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class RoleSD 
+{
+	WebDriver driver;
+	
+	
+	@Given("^Tester Should on Ranford Home Page$")
+	public void tester_Should_on_Ranford_Home_Page() throws Throwable
+	{
+		driver=new FirefoxDriver();
+		//Maximise
+		
+		driver.manage().window().maximize();
+		//URL
+		
+		driver.get("http://103.211.39.246/ranford2");
+		
+	}
+	
+	@When("^User Enters \"(.*)\" and \"(.*)\" click on Login$")
+	public void user_Enters_UserName_Password_and_click_on_Login(String Un, String Pwd) throws Throwable 
+	{
+		driver.findElement(By.id("txtuId")).sendKeys(Un);
+		driver.findElement(By.id("txtPword")).sendKeys(Pwd);
+		
+		Thread.sleep(3000);
+		
+		driver.findElement(By.xpath("//*[@id=\"login\"]")).click();
+		
+		
+	}
+	
+	@Then("^Tester Click on Role button$")
+	public void Tester_Click_on_Role_button() throws Throwable
+	{
+		
+		driver.findElement(By.xpath("/html/body/table/tbody/tr/td/table/tbody/tr[4]/td/table/tbody/tr[1]/td[2]/table/tbody/tr[2]/td/table/tbody/tr[4]/td/a/img")).click();
+		Thread.sleep(3000);
+	}
+	@When("^Tester Click on New Role and enter \"(.*)\" and \"(.*)\" $")
+    public void Tester_Click_on_New_Role_and_enter_RoleName_and_RoleType(String Rname, String Rtype) throws Throwable
+    {
+         driver.findElement(By.id("BtnRoles")).click();
+		
+		driver.findElement(By.id("txtRname")).sendKeys(Rname);
+		
+		
+		Select Catgry=new Select(driver.findElement(By.xpath("//*[@id=\"lstRtypeN\"]")));
+		Catgry.selectByVisibleText(Rtype);
+		
+		driver.findElement(By.id("btninsert")).click();
+		
+		
+		
+    }
+	@When("^Tester Close the Application$")
+	public void Tester_Close_the_Application() throws Throwable
+	{
+		Thread.sleep(3000);
+		driver.close();
+		
+		
+	}
+
+}

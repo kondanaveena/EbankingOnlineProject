@@ -1,0 +1,5 @@
+RoleName###RoleType###Results
+Gmanagernabbank###E^$^%$&Role Already existed
+Amanagernabbank###E^$^%$&Role Already existed
+Cashiernabbank###E^$^%$&Role Already existed
+Clerknabbank###E^$^%$&Role Already existed

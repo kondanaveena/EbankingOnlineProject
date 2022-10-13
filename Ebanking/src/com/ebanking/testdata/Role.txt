@@ -1,0 +1,5 @@
+RoleName###RoleType###Results
+Gmanagernabbank###E
+Amanagernabbank###E
+Cashiernabbank###E
+Clerknabbank###E
